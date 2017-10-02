@@ -58,12 +58,12 @@ class ProgramaOS
 			str = "ID: #{linha[0]}"
 			(1...linha.size).map{|idx| str<<(", "+campos[idx-1].to_s+": #{linha[idx]}")}
 		when "OrdemServico"
-			str = "Numero da OS: #{linha[0]}\t\t"
+			str = "Numero da OS: #{linha[0]}      "
 			cliente = pesquisaTabela("Cliente",{id: linha[1]}).first
-			str << "Cliente[#{linha[1]}]: #{cliente[1]}\t\t"
+			str << "Cliente[#{linha[1]}]: #{cliente[1]}      "
 			funcionario = pesquisaTabela("Funcionario",{id: linha[2]}).first
 			str << "Funcionario[#{linha[2]}]: #{funcionario[1]}\n"
-			str << "Data de Solicitacao: #{linha[4]}\t\tPrevisao de Conclusao: #{linha[5]}\n"
+			str << "Data de Solicitacao: #{linha[4]}      Previsao de Conclusao: #{linha[5]}\n"
 			str << "Descricao do Servico: #{linha[3]}\n"
 		end
 		puts str
