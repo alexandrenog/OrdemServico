@@ -56,7 +56,7 @@ class ProgramaOS
 		case tipo_dado
 		when "Cliente", "Funcionario"
 			str = "ID: #{linha[0]}"
-			(1...linha.size).map{|idx| str<<(", "+campos[idx-1].to_s+": #{linha[idx]}")}
+			(1...linha.size).map{|idx| str << (", "+campos[idx-1].to_s+": #{linha[idx]}")}
 		when "OrdemServico"
 			str = "Numero da OS: #{linha[0]}      "
 			cliente = pesquisaTabela("Cliente",{id: linha[1]}).first
@@ -135,7 +135,7 @@ class ProgramaOS
 					when "data_solicitacao", "previsao_conclusao"
 						while !texto_eh_data(valor); valor=le(texto, true); end
 					end
-					valores<<valor
+					valores << valor
 				}
 				executa_autenticando.call(lambda{
 					set = atributos.map.with_index{|e,i|
@@ -191,13 +191,13 @@ class ProgramaOS
 		}
 		@operacoesMenu=[]
 		{"Cliente" => @atributosPessoa,"Funcionario" => @atributosPessoa,"OrdemServico" => @atributosOS}.each do |tipo_dado, atributos|
-			@operacoesMenu<<cadastro.call(tipo_dado,atributos)
-			@operacoesMenu<<  edicao.call(tipo_dado,atributos)
-			@operacoesMenu<<pesquisa.call(tipo_dado,atributos)
-			@operacoesMenu<<exclusao.call(tipo_dado,atributos)
-			@operacoesMenu<<  listar.call(tipo_dado,atributos)
+			@operacoesMenu << cadastro.call(tipo_dado,atributos)
+			@operacoesMenu <<   edicao.call(tipo_dado,atributos)
+			@operacoesMenu << pesquisa.call(tipo_dado,atributos)
+			@operacoesMenu << exclusao.call(tipo_dado,atributos)
+			@operacoesMenu <<   listar.call(tipo_dado,atributos)
 		end
-		@operacoesMenu<<lambda{exit}
+		@operacoesMenu << lambda{exit}
 	end
 	def run
 		while true
